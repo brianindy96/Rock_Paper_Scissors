@@ -36,6 +36,8 @@ function playerPlay(){
         return "Paper";
     } else if (playerSelection.toLowerCase() === "scissors"){
         return "Scissors";
+    } else{
+        return "Invalid; Score = 0";
     }
 }
    
@@ -122,20 +124,19 @@ function game(){
         console.log(`CPU: ${x} Score: ${computerScore}`);
         console.log(`You: ${y} Score: ${playerScore}`);
     }
+
+    if(playerScore>computerScore){
+        console.log("You win the game!");
+    } else if(playerScore<computerScore){
+        console.log("Computer wins the game!");
+    }  else{
+        console.log("It's a Tie!");
+    }
 }
 
 // if player wins, playerscore ++ print("Score is: Player${playerscore} - Computer ${computerScore})
 // if computer wins, computerScore ++ 
 // if tie, 
-function countScore(z){
-    if(z== "win"){
-        playerScore++;
-    } else if(z == "lose"){
-        computerScore++;
-    } else if(z == "tie"){
-        return;
-    }
-}
 
 
 game();
