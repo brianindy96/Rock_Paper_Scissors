@@ -85,26 +85,30 @@ function playround(x,y){
         return "tie";
     } else if(x === "Rock" && y === "Scissors"){
         console.log("You Lose! Paper beats Rock");
+        computerScore++;
         return "lose";
     } else if(x === "Scissors" && y === "Rock"){
         console.log("You Win! Rock beat Scissors");
+        playerScore++;
         return "win";
     } else if(x === "Scissors" && y === "Paper"){
         console.log("You Lose! Scissors beat Papers");
+        computerScore++;
         return "lose";
     } else if(x === "Rock" && y === "Paper"){
         console.log("You Win! Papers beat Rock");
+        playerScore++;
         return "win";
     } else if(x === "Paper" && y === "Scissors"){
         console.log("You Win! Scissors beat Papers");
+        playerScore++;
         return "win";
     } else if(x === "Paper" && y === "Rock"){
         console.log("You Lose! Papers beat Rock!");
+        computerScore++;
         return "lose";
     }
 }
-
-console.log(playround())
 
 // playRound() 5 times inside of game()
 // keeps score and reports a winner or loser at the end
@@ -112,32 +116,30 @@ console.log(playround())
 
 function game(){
     for (let i = 0; i<5; i++){
-        computerPlay();
-        playerPlay();
-        console.log(`CPU pick ${x}`);
-        console.log(`You pick ${y}`);
-        z = playround(x,y);
-        countScore(z);
+        x = computerPlay();
+        y = playerPlay();
+        z = console.log(playround(x,y));
+        console.log(`CPU: ${x} Score: ${computerScore}`);
+        console.log(`You: ${y} Score: ${playerScore}`);
     }
 }
-
 
 // if player wins, playerscore ++ print("Score is: Player${playerscore} - Computer ${computerScore})
 // if computer wins, computerScore ++ 
 // if tie, 
-function countScore(){
-    if(z === "lose"){
-        return computerScore++;
-    } else if(z === "win"){
-        return playerScore++;
-    } else{
+function countScore(z){
+    if(z== "win"){
+        playerScore++;
+    } else if(z == "lose"){
+        computerScore++;
+    } else if(z == "tie"){
         return;
     }
-
-    
 }
 
 
-
-
 game();
+
+
+
+
