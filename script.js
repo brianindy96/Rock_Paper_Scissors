@@ -125,6 +125,7 @@ function game(){
         console.log(`You: ${y} Score: ${playerScore}`);
     }
 
+    /* Endgame Results */
     if(playerScore>computerScore){
         console.log("You win the game!");
     } else if(playerScore<computerScore){
