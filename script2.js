@@ -6,7 +6,6 @@ let playerScore = 0;
 let computerScore = 0;
 
 
-
 //ComputerPlay
 function computerPlay(){
     let choice = ["rock","paper","scissors"];
@@ -16,13 +15,12 @@ function computerPlay(){
 }
 
 //Player's Play
-btns.forEach(btn => btn.addEventListener('click', play))
-function play(e){
-    const playerSelection = e.target.id;
-    y = playerSelection;
+btns.forEach(btn => btn.addEventListener('click', playRound))
+function playRound(e){
+    const y = e.target.id; // from the event 'click' , we target the id that we 'click' and hold it in a variable y
     console.log(`User's Choice is ${y}`);
     const x = computerPlay();
-    playround(x,playerSelection);
+    playround(x,y);
     countScore();
     winnerDecider();
     
@@ -30,7 +28,7 @@ function play(e){
 // Reset Score
 function setZero(){
     playerScore = 0;
-    computerScore =0;
+    computerScore = 0;
     console.log(`The Score is back to User:${playerScore} to PC: ${computerScore}`);
 }
 
