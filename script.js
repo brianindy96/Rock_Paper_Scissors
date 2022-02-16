@@ -13,7 +13,12 @@ function computerPlay(){
     return x;
 }
 
+console.log(computerPlay());
+// Add eventListener to buttons
 
+const btns = document.querySelectorAll(".btn");
+
+let playerSelection = btns.forEach(btn => btn.addEventListener("click", playerPlay));
 
 // Function that plays a single round of Rock Paper Scissors.
 // function should take two parameters
@@ -26,20 +31,24 @@ function computerPlay(){
 // if player chooses paper, on click, return string Paper
 // if player chooses scisscors, on click, return string Scissors
 
-
+/*
 function playerPlay(){
-    let playerSelection = prompt("Choose Rock, Paper, or Scissors?: ");
+   
+    const btn1 = document.querySelector("#btn1");
+    const btn2 = document.querySelector("#btn2");
+    const btn3 = document.querySelector("#btn3");
 
-    if(playerSelection.toLowerCase() === "rock"){
+    if(playerSelection == btn1){
         return "Rock";
-    } else if(playerSelection.toLowerCase() === "paper"){
+    } else if(playerSelection == btn2){
         return "Paper";
-    } else if (playerSelection.toLowerCase() === "scissors"){
+    } else if (playerSelection == btn3){
         return "Scissors";
     } else{
         return "Invalid; Score = 0";
     }
-}
+} //
+*/
    
 //Compare playerPlay() and computerPlay() result
 
@@ -48,18 +57,6 @@ x = computerPlay();
 y = playerPlay();
 
 
-
-// Numbers of Outcomes in Rock, Paper, Scissors
-// Tie
-// you rock, cpu paper
-// you rock, cpu scissors
-// you scissors, cpu rock
-// you scissors, cpu paper
-// you paper, cpu scissors
-// you paper, cpu rock
-
-//Chose if-else Conditions
-// can be written in switch case? 
 
 /*
 function playround(x,y){
@@ -114,7 +111,7 @@ function playround(x,y){
 
 // playRound() 5 times inside of game()
 // keeps score and reports a winner or loser at the end
-
+/*
 
 function game(){
     for (let i = 0; i<5; i++){
@@ -126,7 +123,7 @@ function game(){
     }
 
     /* Endgame Results */
-    if(playerScore>computerScore){
+   /* if(playerScore>computerScore){
         console.log("You win the game!");
     } else if(playerScore<computerScore){
         console.log("Computer wins the game!");
