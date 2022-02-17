@@ -135,3 +135,14 @@ button.restart.color{
 button.restart.color:hover{
     transform: scale(1.4);
 }
+
+a{
+    text-decoration: none;
+    color: black;
+    transition: 0.07s ease;
+}
+
+a:hover{
+    letter-spacing: 1.5px;
+}
+    
