@@ -4,6 +4,8 @@
 const btns = document.querySelectorAll(".btn");
 let playerScore = 0;
 let computerScore = 0;
+const cpuscoreboard = document.querySelector(".comscore");
+const userscoreboard = document.querySelector(".yourscore");
 
 
 //ComputerPlay
@@ -34,8 +36,8 @@ function setZero(){
 
 // Count Score
 function countScore(){
-    console.log(`User score is ${playerScore}`)
-    console.log(`PC score is ${computerScore}`)
+    cpuscoreboard.innerHTML = `${computerScore}`
+    userscoreboard.innerHTML = `${playerScore}`
 }
 
 // First to 5 wins
