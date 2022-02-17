@@ -1,4 +1,3 @@
-
 //Globalscope
 
 const btns = document.querySelectorAll(".btn");
@@ -6,7 +5,12 @@ let playerScore = 0;
 let computerScore = 0;
 const cpuscoreboard = document.querySelector(".comscore");
 const userscoreboard = document.querySelector(".yourscore");
-
+const comment = document.querySelector(".comment");
+const btn = document.querySelector(".btn");
+const restart = document.querySelector(".restart");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
 
 //ComputerPlay
 function computerPlay(){
@@ -25,63 +29,84 @@ function playRound(e){
     playround(x,y);
     countScore();
     winnerDecider();
-    
 }
 // Reset Score
 function setZero(){
     playerScore = 0;
     computerScore = 0;
-    console.log(`The Score is back to User:${playerScore} to PC: ${computerScore}`);
+    cpuscoreboard.innerHTML = `0`;
+    userscoreboard.innerHTML = `0`;
+    comment.innerHTML = ``;
+    enabledButtons();
+    restart.classList.remove("color");
 }
 
 // Count Score
 function countScore(){
-    cpuscoreboard.innerHTML = `${computerScore}`
-    userscoreboard.innerHTML = `${playerScore}`
+    cpuscoreboard.innerHTML = `${computerScore}`;
+    userscoreboard.innerHTML = `${playerScore}`;
 }
 
 // First to 5 wins
 function winnerDecider(){
     if(playerScore === 5){
-        console.log("Player Wins")
-        setZero();
+        disabledButtons()
+        comment.innerHTML = `You win the Game!!`;
+        restart.classList.add("color");
         return;
     } else if(computerScore === 5){
-        console.log("Computer Wins");
-        setZero();
+        disabledButtons()
+        comment.innerHTML = `Computer wins the Game..`;
+        restart.classList.add("color");
         return;
     }
+}
+
+// Disabling and Enabling Buttons // 
+
+function disabledButtons(){
+    rock.setAttribute('disabled','disabled');
+    paper.setAttribute('disabled','disabled');
+    scissors.setAttribute('disabled','disabled');
+}
+
+function enabledButtons(){
+    rock.removeAttribute('disabled');
+    paper.removeAttribute('disabled');
+    scissors.removeAttribute('disabled');
 }
 //Compare Results // 
 
 function playround(x,playerSelection){
     if(x === playerSelection){
-        console.log("It's a Tie!");
+        comment.innerHTML = `It's a Tie!`;
         return "tie";
     } else if(x === "rock" && playerSelection === "scissors"){
-        console.log("You Lose! Paper beats Rock");
+        comment.innerHTML = `You Lose! Paper beats Rock"`;
         computerScore++;
         return "lose";
     } else if(x === "scissors" && playerSelection === "rock"){
-        console.log("You Win! Rock beat Scissors");
+        comment.innerHTML = `You Win! Rock beat Scissors`;
         playerScore++;
         return "win";
     } else if(x === "scissors" && playerSelection === "paper"){
-        console.log("You Lose! Scissors beat Papers");
+        comment.innerHTML = `You Lose! Scissors beat Papers`;
         computerScore++;
         return "lose";
     } else if(x === "rock" && playerSelection === "paper"){
-        console.log("You Win! Papers beat Rock");
+        comment.innerHTML = `You Win! Papers beat Rock"`;
         playerScore++;
         return "win";
     } else if(x === "paper" && playerSelection === "scissors"){
-        console.log("You Win! Scissors beat Papers");
+        comment.innerHTML = `You Win! Scissors beat Papers`;
         playerScore++;
         return "win";
     } else if(x === "paper" && playerSelection === "rock"){
-        console.log("You Lose! Papers beat Rock!");
+        comment.innerHTML = `You Lose! Papers beat Rock!`;
         computerScore++;
         return "lose";
     }
 }
 
+//Restart Button //
+restart.addEventListener('click', setZero);
